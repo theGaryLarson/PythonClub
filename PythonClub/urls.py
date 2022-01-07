@@ -18,6 +18,5 @@ from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    # todo: get this working after migration
-    # path('tech/'), include(Club.urls)
+    path('Club/'), include('Club.urls'),
 ]
