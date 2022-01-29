@@ -1,7 +1,7 @@
 from django.contrib import admin
-from .models import ProductType, Product, Review
+from .models import Tag, Snippet, Comment
 
 # Register your models here.
-admin.site.register(ProductType)
-admin.site.register(Product)
-admin.site.register(Review)
+admin.site.register(Tag)
+admin.site.register(Snippet)
+admin.site.register(Comment)
