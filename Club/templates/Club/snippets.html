@@ -1,9 +1,10 @@
 {% extends 'base.html' %}
 {% block content %}
 <h2>Snippets</h2>
-<ul>
+
     {% for snippet in snippet_list %}
-        <li>{% snippet.snippet_title %}</li>
+        <h6>{{ snippet.snippet_title }}</h6>
+        <pre>{{ snippet.code_snippet }}</pre>
     {% endfor %}
-</ul>
-{% end block %}
+
+{% endblock %}

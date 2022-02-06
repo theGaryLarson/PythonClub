@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Tags</h2>
+<ul>
+    {% for tag in tag_list %}
+        <li>{{ tag.keyword }}</li>
+    {% endfor %}
+</ul>
+{% endblock %}

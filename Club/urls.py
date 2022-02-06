@@ -3,7 +3,9 @@ from . import views
 
 urlpatterns = [
     path('', views.index, name='index'),
-    path('snippets/', views.snippets, name='snippets')
+    path('snippets/', views.snippets, name='snippets'),
+    path('comments/', views.comments, name='comments'),
+    path('tags/', views.tags, name='tags')
 ]
 
 
