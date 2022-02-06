@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Snippets</h2>
+<ul>
+    {% for snippet in snippet_list %}
+        <li>{% snippet.snippet_title %}</li>
+    {% endfor %}
+</ul>
+{% end block %}

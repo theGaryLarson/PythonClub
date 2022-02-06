@@ -20,9 +20,9 @@ class Tag(models.Model):
 
 class Snippet(models.Model):
     snippet_title = models.CharField(max_length=255)
-    tag = models.ForeignKey(Tag, on_delete=models.DO_NOTHING)
+    tag = models.ManyToManyField(Tag)
     user = models.ForeignKey(User, on_delete=models.DO_NOTHING)
-    snippet_entrydate = models.DateField(datetime.datetime.now())
+    snippet_entrydate = models.DateField()  # datetime.datetime.now()
     reference_url = models.URLField(null=True, blank=True)
     code_snippet = models.TextField()
 
@@ -36,7 +36,7 @@ class Snippet(models.Model):
 
 class Comment(models.Model):
     comment_title = models.CharField(max_length=255)
-    comment_date = models.DateField(datetime.datetime.now())
+    comment_date = models.DateField()  # datetime.datetime.now()
     snippet = models.ForeignKey(Snippet, on_delete=models.CASCADE)
     user = models.ManyToManyField(User)
     snippet_rating = models.SmallIntegerField()
@@ -47,4 +47,4 @@ class Comment(models.Model):
 
     class Meta:
         db_table = 'comment'  # if not set will include project name with table. Giving us a long String
-        verbose_name_plural = 'comment'
+        verbose_name_plural = 'comments'
