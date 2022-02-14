@@ -34,7 +34,7 @@ class Migration(migrations.Migration):
                 ('snippet_entrydate', models.DateField()),
                 ('reference_url', models.URLField(blank=True, null=True)),
                 ('code_snippet', models.TextField()),
-                ('tag', models.ManyToManyField(to='Club.Tag')),
+                ('tag', models.ManyToManyField(to='club.Tag')),
                 ('user', models.ForeignKey(on_delete=django.db.models.deletion.DO_NOTHING, to=settings.AUTH_USER_MODEL)),
             ],
             options={
@@ -50,7 +50,7 @@ class Migration(migrations.Migration):
                 ('comment_date', models.DateField()),
                 ('snippet_rating', models.SmallIntegerField()),
                 ('discussion_text', models.TextField()),
-                ('snippet', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='Club.snippet')),
+                ('snippet', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='club.snippet')),
                 ('user', models.ManyToManyField(to=settings.AUTH_USER_MODEL)),
             ],
             options={

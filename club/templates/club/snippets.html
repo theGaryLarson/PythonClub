@@ -3,8 +3,9 @@
 <h2>Snippets</h2>
 
     {% for snippet in snippet_list %}
-        <h6>{{ snippet.snippet_title }}</h6>
+        <h3>{{ snippet.snippet_title }}</h3>
         <pre>{{ snippet.code_snippet }}</pre>
+        <p><a href="{% url 'snippet_detail' snippet_id=snippet.id %}"> {{ snippet.snippet_title }} </a></p>
     {% endfor %}
 
 {% endblock %}

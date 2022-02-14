@@ -2,5 +2,5 @@
 /venv/
 /PythonClub/__init__.py
 /PythonClub/asgi.py
-/Club/__init__.py
+/club/__init__.py
 /PythonClub/settings.ini
