@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load static %}
 {% block content %}
 <h2>Snippet Detail</h2>
 <p>Snippet Title : {{ snippet.snippet_title }}<br/>
@@ -6,6 +7,6 @@
     Posted by: {{ snippet.user }}<br/>
     Date Posted: {{ snippet.snippet_entrydate }}
     <pre>{{ snippet.code_snippet }}</pre>
-    <a target="_blank" href="{{ snippet.reference_url }}">source</a>
+    <a target="_blank" href="{{ snippet.reference_url }}">{{ snippet.snippet_title }} website source</a>
 </p>
 {% endblock %}

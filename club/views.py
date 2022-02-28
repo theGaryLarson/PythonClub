@@ -1,5 +1,6 @@
 from django.shortcuts import render, get_object_or_404
 from .models import Snippet, Comment, Tag
+from .forms import SnippetForm, TagForm, CommentForm
 
 
 # Create your views here.
@@ -25,3 +26,42 @@ def get_tags(request):
 def snippet_detail(request, snippet_id):
     snippet = get_object_or_404(Snippet, pk=snippet_id)
     return render(request, 'club/snippet_detail.html', {'snippet': snippet})
+
+
+def newSnippet(request):
+    form = SnippetForm
+    if request.method == 'POST':
+        form = SnippetForm(request.POST)
+        if form.is_valid():
+            post = form.save(commit=True)
+            post.save()
+            form = SnippetForm()
+    else:
+        form = SnippetForm()
+    return render(request, 'club/newSnippet.html', {'form': form})
+
+
+def newTag(request):
+    form = TagForm
+    if request.method == 'POST':
+        form = TagForm(request.POST)
+        if form.is_valid():
+            post = form.save(commit=True)
+            post.save()
+            form = TagForm()
+    else:
+        form = TagForm()
+    return render(request, 'club/newTag.html', {'form': form})
+
+
+def newComment(request):
+    form = CommentForm
+    if request.method == 'POST':
+        form = CommentForm(request.POST)
+        if form.is_valid():
+            post = form.save(commit=True)
+            post.save()
+            form = CommentForm()
+    else:
+        form = CommentForm()
+    return render(request, 'club/newComment.html', {'form': form})

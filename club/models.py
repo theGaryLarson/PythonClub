@@ -22,7 +22,7 @@ class Snippet(models.Model):
     snippet_title = models.CharField(max_length=255)
     tag = models.ManyToManyField(Tag)
     user = models.ForeignKey(User, on_delete=models.DO_NOTHING)
-    snippet_entrydate = models.DateField()  # datetime.datetime.now()
+    snippet_entrydate = models.DateField(datetime.datetime.now())
     reference_url = models.URLField(null=True, blank=True)
     code_snippet = models.TextField()
 

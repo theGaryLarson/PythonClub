@@ -7,6 +7,9 @@ urlpatterns = [
     path('comments/', views.get_comments, name='comments'),
     path('tags/', views.get_tags, name='tags'),
     path('snippet_detail/<int:snippet_id>', views.snippet_detail, name='snippet_detail'),
+    path('newSnippet/', views.newSnippet, name='newSnippet'),
+    path('newTag/', views.newTag, name='newTag'),
+    path('newComment/', views.newComment, name='newComment'),
 
 ]
 

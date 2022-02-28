@@ -90,8 +90,8 @@ class CommentTestCase(TestCase):
         test.snippet = Snippet()
         test.snippet.snippet_title = 'snippet title'
         # todo: look up documentation to test many to many relationships
-        # test.user = User()
-        # test.user.username = 'garyl'
+        # user = User.objects.create(username='garyl')
+        # test.user.set([user.pk])
         test.snippet_rating = 5
         test.discussion_text = 'Let us talk about this ...'
         return test
