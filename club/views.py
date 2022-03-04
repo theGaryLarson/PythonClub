@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_object_or_404
 from .models import Snippet, Comment, Tag
 from .forms import SnippetForm, TagForm, CommentForm
+from django.contrib.auth.decorators import login_required
 
 
 # Create your views here.
@@ -28,6 +29,7 @@ def snippet_detail(request, snippet_id):
     return render(request, 'club/snippet_detail.html', {'snippet': snippet})
 
 
+@login_required
 def newSnippet(request):
     form = SnippetForm
     if request.method == 'POST':
@@ -41,6 +43,7 @@ def newSnippet(request):
     return render(request, 'club/newSnippet.html', {'form': form})
 
 
+@login_required
 def newTag(request):
     form = TagForm
     if request.method == 'POST':
@@ -54,6 +57,7 @@ def newTag(request):
     return render(request, 'club/newTag.html', {'form': form})
 
 
+@login_required
 def newComment(request):
     form = CommentForm
     if request.method == 'POST':
@@ -65,3 +69,11 @@ def newComment(request):
     else:
         form = CommentForm()
     return render(request, 'club/newComment.html', {'form': form})
+
+
+def login_message(request):
+    return render(request, 'club/loginmessage.html')
+
+
+def logout_message(request):
+    return render(request, 'club/logoutmessage.html')
