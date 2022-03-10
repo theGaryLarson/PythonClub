@@ -1,6 +1,6 @@
 import datetime
 from .views import index, get_tags, get_comments, get_snippets, snippet_detail
-from django.urls import reverse
+from django.urls import reverse, reverse_lazy
 from django.contrib.auth.models import User
 from django.test import TestCase
 
@@ -188,3 +188,19 @@ class GetSnippetDetail(TestCase):
     #     response = self.client.get(reverse('snippet_detail', args=(self.snip.id,)))
     #     # Assert that self.post is actually returned by the post_detail view
     #     self.assertEqual(response.status_code, 200)
+
+
+# todo: more research.. Why is this expecting a 200 message and receiving a 404
+class NewSnippetAuthenticationTest(TestCase):
+    def setup(self):
+        self.test_user = User.objects.create_user(username='testuser1', password='p@ssw0rd1')
+        self.tag = Tag.create.objects.create(keyword='beginner', tag_description='Covers Syntax')
+        self.snippet = Snippet.objects.create(snippet_title='Our First Program',
+                                              snippet_entrydate=datetime.date.today(),
+                                              reference_url='https://www.google.com',
+                                              code_snippet='print(\'Hello World!\'', user=self.test_user,
+                                              tag=self.tag)
+
+    def testRedirectIfNotLoggedIn(self):
+        response = self.client.get(reverse('newSnippet'))
+        self.assertRedirects(response, '/accounts/login/?next=/club/newSnippet')
